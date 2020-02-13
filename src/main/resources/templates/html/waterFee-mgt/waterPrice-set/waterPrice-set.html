@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" id="cust">
+<head>
+  <meta charset="utf-8">
+  <title>水费管理 / 水价设置</title>
+  <link rel="stylesheet" href="../../../../static/css/layui.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../../../../static/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="../../../ztree/zTreeStyle/zTreeStyle.css"/>
+	<style type="text/css">
+		.layui-input{width: 100px;}
+		.layui-input_{width: 150px;}
+	</style>
+</head>
+<body class="inner-body layui-row layui-col-space10" style="background:#f2f2f2;position: relative; ">
+<!-------默认表格开始----------->
+<div class="" style="overflow-x: auto; overflow-y: hidden;">	 
+	<div class="tableHtml" style="height: 100%;background: #FFFFFF; min-width: 1000px;">
+		<div class="top-btn">
+			<div class="layui-btn-group">
+				<button class="layui-btn layui-btns" id="lookBtn">查看</button>
+				<button class="layui-btn layui-btns" id="addBtn">新增水价</button>
+		 		<button class="layui-btn layui-btns" id="editBtn">编辑</button>
+				<button class="layui-btn layui-btns" id="delBtn">删除</button>
+		    </div>
+			<div class="search-btn-group layui-form">
+				<input type="text"  autocomplete="off" class="layui-input layui-input_" placeholder="水价名称">
+				<input type="text"  autocomplete="off" class="layui-input layui-input_" placeholder="起算月份" name="date" id="date" lay-verify="date" >
+				<button class="layui-btn layui-btns">查询</button>
+			</div>
+		</div>
+		<div class="tableDiv" >
+			<table id="layui-table" lay-filter="tableBox" class="layui-table"></table>
+		</div>
+	</div>
+</div>
+
+<!-----------------默认表格结束------------>
+
+</body>
+<script id="switchTpl" type="text/html">
+  <!-- 这里的 checked 的状态只是演示 -->
+  <input type="checkbox" name="zhuang" value="{{d.id}}" lay-skin="switch" lay-text="开|关" lay-filter="switch" {{ d.zhuangt == '开' ? 'checked' : '' }}>
+</script>
+<script src='../../../../static/layui.all.js'></script>
+<script src="../../../../static/js/common.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//主动加载jquery模块
+layui.use(['jquery', 'layer','form'], function(){
+	var $ = layui.jquery //重点处
+	,form=layui.form
+	,layer = layui.layer
+	,laydate = layui.laydate
+	table = layui.table;//表格，注意此处table必须是全局变量
+	//开始时间
+	laydate.render({
+		elem: '#date'
+	});
+	var arr = [[ 
+	    {type:'checkbox'}
+	  ,{field: 'qsyf', title: '起算月份',width:120}
+      ,{field: 'sjmc', title: '水价名称'}
+      ,{field: 'sjlx', title: '水价类型'}
+	  ,{field: 'time', title: '创建时间'}
+      ,{field: 'zhuangt', title: '状态',templet: '#switchTpl',width:100}
+    ]];
+	var limitArr =[10,20,30];
+	var urls = '../../../tableJson3.js';
+	com.tableRender('#layui-table','tableId','full-53',limitArr,urls,arr);//加载表格,注意tableId是自定义的，在表格重载需要！！
+	
+	//监听开关操作
+	form.on('switch(switch)', function(obj){
+		
+		layer.tips('状态：'+ obj.elem.checked, obj.othis);
+	});
+	//查看详情
+	$("#lookBtn").click(function(){	
+	  com.checkOpen("查看详情","html/waterFee-mgt/waterPrice-set/look.html",['700px', '500px']);
+	});
+	//编辑
+	$("#editBtn").click(function(){	
+	  com.checkOpen("编辑","html/waterFee-mgt/waterPrice-set/edit.html",['700px', '500px']);
+	});
+   //新增水价
+	$("#addBtn").click(function(){	
+	  com.pageOpen("新增水价","html/waterFee-mgt/waterPrice-set/add.html",['700px', '500px']);
+	});
+
+    //删除
+	$("#delBtn").click(function(){	
+		var checkStatus = table.checkStatus('tableId');//tableId 即为基础参数 id 对应的值
+		console.log(checkStatus);
+		//勾选一条数据
+		if (checkStatus.data.length == 0) {
+			parent.layer.open({
+				title: '温馨提示'
+				, content: '请勾选一条目标数据！'
+			});
+			return false;
+		} 
+			parent.layer.confirm('水价删除后不可找回，确定删除此水价?', {title:'提示'}, function(index){
+			  //do something
+			  
+			  parent.layer.close(index);
+			  window.location.reload();
+			 
+			});
+	});
+	
+	
+ 
+
+
+
+})	
+</script>
+</html>

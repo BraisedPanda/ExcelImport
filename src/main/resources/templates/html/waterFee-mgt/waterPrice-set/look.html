@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>水费管理 / 水价设置-查看</title>
+ <link rel="stylesheet" href="../../../../static/css/layui.css" media="all">
+   <link rel="stylesheet" type="text/css" href="../../../../static/css/common-layer.css"/>
+   <style>
+   	.layui-form-item{margin-bottom: 10px;}
+   	.layui-form-select dl{max-height: 187px;}
+   	.layui-form-item .layui-input-inline{width: 460px !important;}
+ 		.layui-form-item .layui-input-inline1{width: auto !important;border: none;}
+ 		.lableName{float: left; height: 38px;line-height: 38px;padding-right: 10px;width: 120px;}
+ 		.layui-form-item .w70{width: 70px !important;}
+ 		.layui-form-item .w120{width:120px !important;}
+ 		.layui-input_ {
+ 		    width: 206px;
+ 			display: inline-block;
+ 		}
+ 		
+ 		.layui-table td, .layui-table th{text-align: center;}
+   </style>
+ </head>
+ <body style="background: #fff;overflow-x:hidden ;" class="innerBody">
+ <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+ 	<legend>新增水价（<span id="addType">非阶梯水价</span>）</legend>
+ </fieldset>
+ <form class="layui-form layui-form-pane ml30" action="" id="formHtml" style="width: ;margin-top: 20px;" lay-filter="updForm">
+   <div class="layui-form-item">
+     <div class="layui-inline">
+       <label class="layui-form-label label-120">起算月份</label>
+       <div class="layui-input-inline">
+         <input type="text" name="" lay-verify="required" autocomplete="off" class="layui-input layui-disabled" readonly="readonly" placeholder="请输入" value="2020-01">
+       </div>
+     </div>
+   </div>
+   <div class="layui-form-item">
+     <div class="layui-inline">
+       <label class="layui-form-label label-120">水价名称</label>
+       <div class="layui-input-inline">
+         <input type="text" name="" lay-verify="required" autocomplete="off" class="layui-input layui-disabled" readonly="readonly" value="金色家园水价" placeholder="请输入">
+       </div>
+     </div>
+   </div>
+   <div class="layui-form-item">
+     <div class="layui-inline">
+       <label class="layui-form-label label-120">水价类型</label>
+       <div class="layui-input-inline">
+         <input type="text" name="" lay-verify="required" autocomplete="off" class="layui-input layui-disabled" readonly="readonly" value="非阶梯水价" placeholder="请输入">
+       </div>
+     </div>
+   </div>
+   <div class="layui-form-item" id="feeType">
+     <div class="layui-inline">
+       <label class="layui-form-label label-120">水费类型</label>
+       <div class="layui-input-inline" style="height: 36px; border:1px solid #e6e6e6;">
+ 		   <input name="feeType[sf]" title="水费" value="sf" type="checkbox" lay-filter="feeType" lay-skin="primary" checked="checked" disabled="disabled">
+ 		   <input name="feeType[wsclf]" title="污水处理费" value="wsclf" type="checkbox" lay-filter="feeType" lay-skin="primary" disabled="disabled">
+ 		   <input name="feeType[zf]" title="资费" value="zf" type="checkbox" lay-filter="feeType" lay-skin="primary"  checked="checked" disabled="disabled">
+ 		   <input name="feeType[psb]" title="排水比" value="psb" type="checkbox" lay-filter="feeType" lay-skin="primary" id="psb" disabled="disabled">
+       </div>
+     </div>
+   </div>
+   <table class="layui-table" style="width: 592px;">
+     <thead>
+       <tr id="addth">
+         <th>名称</th>
+         <th>水费</th>
+         <th>污水处理费</th>
+ 		 <th>资费</th>
+ 		 <th>排水比</th>
+       </tr> 
+     </thead>
+     <tbody>
+       <tr id="addtd">
+         <td>价格（元）</td>
+         <td>2</td>
+         <td>1</td>
+ 		 <td>2</td>
+ 		 <td>2</td>
+       </tr>
+     </tbody>
+   </table>
+   <div class="layui-form-item  window-block-btn">
+     <div class="layui-input-block">
+     	<button type="button" class="layui-btn layui-btn-primary window-btn" id="canleBtn">取消</button>
+       <button type="button" class="layui-btn window-btn" lay-submit="" lay-filter="confirmBtn">确定</button>
+       
+     </div>
+  	</div>
+ </form>
+ 
+ 
+ </body>
+ 
+ <script src="../../../../static/layui.all.js"></script>
+ <script src="../../../../static/js/common.js" type="text/javascript" charset="utf-8"></script>
+ <script type="text/javascript">
+ 	 //主动加载jquery模块
+ 	layui.use(['jquery', 'layer','laydate'], function(){
+ 		var $ = layui.jquery //重点处
+ 		,laydate = layui.laydate
+ 		,form = layui.form
+ 		,layer = layui.layer
+ 		,laydate = layui.laydate;
+ 		//得到父页面的id值
+ 		var index = (window.parent.index_);
+ 		console.log(index);
+ 		//取消
+ 		$("body").on("click",".window-btn",function(){
+ 			parent.layer.close(index);//关闭layer
+ 		})
+ 	})
+    
+ </script>
+ </html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>水费业务 / 账单管理-账单列表-订单详情</title>
+  <link rel="stylesheet" href="../../../../static/css/layui.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../../../../static/css/common-layer.css"/>
+  <link rel="stylesheet" type="text/css" href="../../../ztree/zTreeStyle/zTreeStyle.css"/>
+  <style>
+  	.layui-form-item{margin-bottom: 10px;}
+  	.layui-form-select dl{max-height: 187px;}
+  	label{width: 175px !important;}
+  	.treeBtn{ position: absolute; bottom: 10px; padding-top: 10px; text-align: right; left: 10px; right: 10px; border-top: 1px solid #e6e6e6;}
+  	#search-tree,#search2-tree,#search3-tree{width: 364px;height: 340px;background: #F6F6F6;position: absolute;top: 38px;left: 0;z-index: 9999;overflow: auto;display: none;}
+	.cifa{
+		margin-left: 175px !important;
+		border: 1px solid #E6E6E6;
+		width: 577px;
+	}
+	.prepaid{
+		display: none;
+	}
+  </style>
+</head>
+<body style="background: #fff;overflow-x:hidden ;" class="innerBody">
+
+<form class="layui-form layui-form-pane ml30" action="" id="formHtml" style="width: ;margin-top: 20px;" lay-filter="updForm">
+	<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	  <legend>用户信息</legend>
+	</fieldset>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">户号</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="00001" disabled="">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">姓名</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="李晓" disabled="">
+			</div>
+		</div>
+		
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">身份证号</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="3401703038400888" disabled="">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">联系电话</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="18096456339" disabled="">
+			</div>
+		</div>
+		
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">用户类型</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="居民用户" disabled="">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">装表类型</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="物联网水表" disabled="">
+			</div>
+		</div>
+		
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">开户日期</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="20191114 " disabled="">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">付费模式</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="预付费" disabled="">
+			</div>
+		</div>
+		
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">水价名称</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="金色家园居民用水 " disabled="">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">详细地址</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="安徽省合肥市瑶海区聚福家园2栋103" disabled="">
+			</div>
+		</div>
+		
+	</div>
+	
+	<!-- <div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">详细地址</label>
+			<div class="layui-input-inline" style="width: 578px">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="安徽省合肥市瑶海区聚福家园2栋103" disabled="">
+			</div>
+		</div>
+		
+	</div> -->
+	
+	
+	<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+	  <legend>订单信息</legend>
+	</fieldset>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">订单号</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="20191100001" disabled="">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">创建时间</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="20191120" disabled="">
+			</div>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">充值金额（元）</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="100" disabled="">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">购入水量（吨）</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="50" disabled="">
+			</div>
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">当前余额（元）</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="105" disabled="">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">当前剩余水量（吨）</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="51" disabled="">
+			</div>
+		</div>
+	</div> 
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">保底水费</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="无" disabled="">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">订单状态</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="已支付" disabled="">
+			</div>
+		</div>
+	</div> 
+	<div class="layui-form-item">
+		<label class="layui-form-label">水费类型</label>
+		<div class="layui-input-block cifa">	
+			<input type="checkbox" name="" title="水费" lay-skin="primary" checked disabled>
+			<input type="checkbox" name="" title="污水处理费" lay-skin="primary" checked disabled> 
+			<input type="checkbox" name="" title="资费" lay-skin="primary" checked disabled> 		
+		</div>
+	</div>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">水价名称</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="金色家园居民用水" disabled="">
+			</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label">支付方式</label>
+			<div class="layui-input-inline">
+				<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="现金支付" disabled="">
+			</div>
+		</div>
+	</div>
+	
+
+  <!-- <div class="layui-form-item  window-block-btn">
+    <div class="layui-input-block">
+    	<button type="button" class="layui-btn layui-btn-primary window-btn" id="canleBtn" >取消</button>
+      <button type="button" class="layui-btn window-btn" lay-submit="" lay-filter="confirmBtn">提交</button>
+    </div>
+ 	</div> -->
+</form>
+
+
+</body>
+
+<script src="../../../../static/layui.all.js"></script>
+<script src="../../../../static/js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../static/js/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script src="../../../ztree/jquery.ztree.all.js" type="text/javascript"></script>
+<script type="text/javascript">
+	 //主动加载jquery模块
+	layui.use(['jquery', 'layer'], function(){
+		var $ = layui.jquery //重点处
+		,layer = layui.layer;
+		//得到父页面的值
+		var index = (window.parent.index_);
+		var id = (window.parent.id_);
+		console.log(id);
+		layui.use('form', function(){  
+		 	var form = layui.form;
+		 	//------表单提交-------
+			form.on('submit(confirmBtn)', function (data) {
+			    var obj = data.field;
+			    console.log(obj);
+			    //以下是ajax
+			    
+			    /*添加成功之后，关闭弹窗，刷新父页面*/
+			    parent.layer.close(index);//关闭layer
+			    $('#iframe',parent.document).attr('src', 'html/water-work/user-pay/user-pay.html');
+			});
+			//取消
+			$("body").on("click","#canleBtn",function(){
+				parent.layer.close(index);//关闭layer
+			})
+			
+			      
+			
+		})	
+	})
+   
+</script>
+</html>

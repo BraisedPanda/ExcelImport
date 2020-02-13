@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" id="cust">
+	<head>
+		<meta charset="utf-8">
+		<title>用户管理 / 过户记录-查看</title>
+		<link rel="stylesheet" href="../../../../static/css/layui.css" media="all">
+		<link rel="stylesheet" type="text/css" href="../../../../static/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../../ztree/zTreeStyle/zTreeStyle.css" />
+	</head>
+	<body style="background: #fff;overflow-x:hidden ;" class="innerBody">
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+			<legend>旧用户信息</legend>
+		</fieldset>
+		<form class="layui-form layui-form-pane ml30" action="" style="width: ;margin-top: 20px;" lay-filter="">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">户号</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="00001"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">姓名</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="李晓"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">初始水量</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="3.2"
+						 disabled="">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">身份证号</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="320543198711114321"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">联系电话</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="13112321232"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">用户类型</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="居民用水"
+						 disabled="">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">装表类型</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="物联网水表"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">开户日期</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="20191114"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">付费模式</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="预付费"
+						 disabled="">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">水价名称</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="金色家园居民用水"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">地址</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="合肥市瑶海区金色家园1栋101室"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">水表型号</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="LXSY-15"
+						 disabled="">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">保底消费</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="3.0"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">水费出账</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="金色家园后付费"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">阶梯水价</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="无阶梯"
+						 disabled="">
+					</div>
+				</div>
+			</div>
+		</form>
+		<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+			<legend>新用户信息</legend>
+		</fieldset>
+		<form class="layui-form layui-form-pane ml30" action="" style="width: ;margin-top: 20px;" lay-filter="">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">户号</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="00001"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">姓名</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="李晓"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">初始水量</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="3.2"
+						 disabled="">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">身份证号</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="320543198711114321"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">联系电话</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="13112321232"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">用户类型</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="居民用水"
+						 disabled="">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">装表类型</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="物联网水表"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">开户日期</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="20191114"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">付费模式</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="预付费"
+						 disabled="">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">水价名称</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="金色家园居民用水"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">地址</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="合肥市瑶海区金色家园1栋101室"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">水表型号</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="LXSY-15"
+						 disabled="">
+					</div>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">保底消费</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="3.0"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">水费出账</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="金色家园后付费"
+						 disabled="">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">阶梯水价</label>
+					<div class="layui-input-inline">
+						<input name="" class="layui-input" type="text" lay-verify="required" placeholder="请输入" autocomplete="off" value="无阶梯"
+						 disabled="">
+					</div>
+				</div>
+			</div>
+		</form>
+	</body>
+	<script src='../../../../static/layui.all.js'></script>
+	<script src="../../../../static/js/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../../../static/js/jquery-1.4.4.min.js" type="text/javascript"></script>
+	<script src="../../../ztree/jquery.ztree.all.js" type="text/javascript"></script>
+	<script type="text/javascript">
+
+	</script>
+
+
+</html>

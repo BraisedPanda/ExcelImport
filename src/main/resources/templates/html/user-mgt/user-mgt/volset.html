@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>用户管理 / 用户管理-批量设置</title>
+  <link rel="stylesheet" href="../../../../static/css/layui.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../../../../static/css/common-layer.css"/>
+  <link rel="stylesheet" type="text/css" href="../../../ztree/zTreeStyle/zTreeStyle.css"/>
+  <style>
+  	.layui-form-item{margin-bottom: 10px;}
+  	.layui-form-select dl{max-height: 187px;}
+  	label{width: 175px !important;}
+  	.treeBtn{ position: absolute; bottom: 10px; padding-top: 10px; text-align: right; left: 10px; right: 10px; border-top: 1px solid #e6e6e6;}
+  	#search-tree,#search2-tree,#search3-tree{width: 364px;height: 340px;background: #F6F6F6;position: absolute;top: 38px;left: 0;z-index: 9999;overflow: auto;display: none;}
+	.cifa{
+		margin-left: 175px !important;
+		border: 1px solid #E6E6E6;
+		width: 577px;
+	}
+	.prepaid{
+		display: none;
+	}
+  </style>
+</head>
+<body style="background: #fff;overflow-x:hidden ;" class="innerBody">
+
+<form class="layui-form layui-form-pane ml30" action="" id="formHtml" style="width: ;margin-top: 20px;" lay-filter="updForm">
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label label-120">用户类型</label>
+			  <div class="layui-input-inline">
+				  <select name="" lay-filter="">
+					<option value="0" selected>居民用户</option>
+					<option value="1">企业用户</option>
+					<option value="2">政府用户</option>
+				  </select>
+				</div>
+		</div>
+		<div class="layui-inline">
+			<label class="layui-form-label label-120">付费模式</label>
+			  <div class="layui-input-inline">
+				  <select name="" lay-filter="fufei">
+					<option value="0" selected>后付费</option>
+					<option value="1">预付费</option>
+				  </select>
+				</div>
+		</div>
+	</div>
+	<div class="afterPay">
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label label-120">水费出账</label>
+				  <div class="layui-input-inline">
+					  <select name="" lay-filter="">
+						<option value="0" selected>金色家园后付费用户出账</option>
+						<option value="1">聚福家园后付费用户出账</option>
+					  </select>
+					</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label label-120">水价名称</label>
+				  <div class="layui-input-inline">
+					  <select name="" lay-filter="">
+						<option value="0" selected>金色家园居民水价</option>
+						<option value="1">聚福家园居民水价</option>
+					  </select>
+					</div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label label-120">装表类型</label>
+				  <div class="layui-input-inline">
+					  <select name="" lay-filter="">
+						<option value="0" selected>物联网水表</option>
+						<option value="1">脱机预付费卡表</option>
+					  </select>
+					</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label label-120">水表型号</label>
+				  <div class="layui-input-inline">
+					  <select name="" lay-filter="">
+						<option value="0" selected>LXSY-15</option>
+						<option value="1">LXSY-20</option>
+						<option value="2">LXSY-25</option>
+					  </select>
+					</div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label label-120">违约金</label>
+				  <div class="layui-input-inline">
+					  <select name="" lay-filter="">
+						<option value="0" selected>无</option>
+						<option value="1">10元</option>
+						<option value="2">20元</option>
+					  </select>
+					</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">保底消费</label>
+				<div class="layui-input-inline">
+					<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off">
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label label-120">自定义类型</label>
+				  <div class="layui-input-inline">
+					  <select name="" lay-filter="">
+						<option value="0" selected>高层用户</option>
+						<option value="1">中层用户</option>
+						<option value="2">低层用户</option>
+					  </select>
+					</div>
+			</div>
+			
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">通知方案选择</label>
+			<div class="layui-input-block cifa">	
+				<input name="fa" title="方案一" type="radio" value="1" checked="">
+				<input name="fa" title="方案二" type="radio" value="2">
+				<input name="fa" title="方案三" type="radio" value="3">
+				<input name="fa" title="方案四" type="radio" value="4">
+			</div>
+		</div>
+	</div>
+	<div class="prepaid">
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label label-120">水价名称</label>
+				  <div class="layui-input-inline">
+					  <select name="" lay-filter="">
+						<option value="0" selected>金色家园居民水价</option>
+						<option value="1">聚福家园居民水价</option>
+					  </select>
+					</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label label-120">装表类型</label>
+				  <div class="layui-input-inline">
+					  <select name="" lay-filter="">
+						<option value="0" selected>物联网水表</option>
+						<option value="1">脱机预付费卡表</option>
+					  </select>
+					</div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label label-120">水表型号</label>
+				  <div class="layui-input-inline">
+					  <select name="" lay-filter="">
+						<option value="0" selected>LXSY-15</option>
+						<option value="1">LXSY-20</option>
+						<option value="2">LXSY-25</option>
+					  </select>
+					</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label label-120">违约金</label>
+				  <div class="layui-input-inline">
+					  <select name="" lay-filter="">
+						<option value="0" selected>无</option>
+						<option value="1">10元</option>
+						<option value="2">20元</option>
+					  </select>
+					</div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			
+			<div class="layui-inline">
+				<label class="layui-form-label">保底消费</label>
+				<div class="layui-input-inline">
+					<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label label-120">自定义类型</label>
+				  <div class="layui-input-inline">
+					  <select name="" lay-filter="">
+						<option value="0" selected>高层用户</option>
+						<option value="1">中层用户</option>
+						<option value="2">低层用户</option>
+					  </select>
+					</div>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			
+			<div class="layui-inline">
+				<label class="layui-form-label">透支水量</label>
+				<div class="layui-input-inline">
+					<input name="" class="layui-input"  type="text" lay-verify="required" placeholder="请输入" autocomplete="off">
+				</div>
+			</div>
+			
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label">通知方案选择</label>
+			<div class="layui-input-block cifa">	
+				<input name="fa" title="方案一" type="radio" value="1" checked="">
+				<input name="fa" title="方案二" type="radio" value="2">
+				<input name="fa" title="方案三" type="radio" value="3">
+				<input name="fa" title="方案四" type="radio" value="4">
+			</div>
+		</div>
+	</div>
+
+
+
+  <div class="layui-form-item  window-block-btn">
+    <div class="layui-input-block">
+    	<button type="button" class="layui-btn layui-btn-primary window-btn" id="canleBtn" >取消</button>
+      <button type="button" class="layui-btn window-btn" lay-submit="" lay-filter="confirmBtn">提交</button>
+    </div>
+ 	</div>
+</form>
+
+
+</body>
+
+<script src="../../../../static/layui.all.js"></script>
+<script src="../../../../static/js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../../../static/js/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script src="../../../ztree/jquery.ztree.all.js" type="text/javascript"></script>
+<script type="text/javascript">
+	 //主动加载jquery模块
+	layui.use(['jquery', 'layer'], function(){
+		var $ = layui.jquery //重点处
+		,layer = layui.layer;
+		//得到父页面的值
+		var index = (window.parent.index_);
+		var id = (window.parent.id_);
+		console.log(id);
+		layui.use('form', function(){  
+		 	var form = layui.form;
+		 	//------表单提交-------
+			form.on('submit(confirmBtn)', function (data) {
+			    var obj = data.field;
+			    console.log(obj);
+			    //以下是ajax
+			    
+			    /*添加成功之后，关闭弹窗，刷新父页面*/
+			    parent.layer.close(index);//关闭layer
+			    $('#iframe',parent.document).attr('src', 'html/sys-mgt/sysUser-mgt/sysUser-mgt.html');
+			});
+			//取消
+			$("body").on("click","#canleBtn",function(){
+				parent.layer.close(index);//关闭layer
+			})
+			
+			//选择付费方式
+			form.on('select(fufei)', function(data){		 
+			  console.log(data.value); //得到被选中的值
+				if(data.value==0){
+					$(".afterPay").show();
+					$(".prepaid").hide();
+				}else if(data.value==1){
+					$(".afterPay").hide();
+					$(".prepaid").show();
+				}
+			});      
+			
+		})	
+	})
+   
+</script>
+</html>

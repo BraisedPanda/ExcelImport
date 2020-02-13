@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>水费管理 / 水费类型</title>
+  <link rel="stylesheet" href="../../../../static/css/layui.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../../../../static/css/common.css"/>
+ 
+</head>
+<body class="inner-body" style="background:#f2f2f2;position: relative; ">
+
+<!-------默认表格开始----------->
+
+<div class="tableHtml" style="height: 100%;background: #FFFFFF;">
+  <div class="top-btn">
+		<div class="layui-btn-group">
+	    <button class="layui-btn" id="addBtn">新增</button>
+	    <button class="layui-btn" id="editBtn">编辑</button>
+	    <button class="layui-btn" id="delBtn">删除</button>
+	  </div>
+	  <div class="search-btn-group">
+		</div>
+	</div>
+	<div class="tableDiv" >
+		<table id="layui-table" lay-filter="tableBox" class="layui-table"></table>
+	</div>
+</div>
+<!-----------------默认表格结束------------>
+
+</body>
+<script src="../../../../static/layui.all.js"></script>
+<script src="../../../../static/js/common.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//主动加载jquery模块
+layui.use(['jquery', 'layer','table'], function(){
+	var $ = layui.jquery //重点处
+	,layer = layui.layer;
+	table = layui.table;//表格，注意此处table必须是全局变量
+	
+	//展示已知数据
+  table.render({
+    elem: '#layui-table'
+    ,id:'idTest'
+    ,cols: [[ //标题栏
+      {type:'radio'}
+      ,{field: 'mc', title: '名称', }
+      ,{field: 'cbmc', title: '计算方式'}
+      ,{field: 'value', title: '值'}
+     
+    ]]
+    ,data: [{
+      "mc": "水费"
+      ,"cbmc": "固定值"
+      ,"value": "0"    
+    }, {
+      "mc": "污水处理费"
+      ,"cbmc": "按百分比计算"
+      ,"value": "1"
+    }, {
+      "mc": "水费2"
+      ,"cbmc": "固定值"
+      ,"value": "2"
+    }, {
+      "mc": "水费3"
+      ,"cbmc": "固定值"
+      ,"value": "3"
+    }]
+    
+  });
+
+
+	/*-----新增-----*/
+ 	$("#addBtn").click(function(){	
+	  com.pageOpen("新增水费类型","html/waterFee-mgt/waterFee-type/add.html",['700px', '380px']);
+	})
+ /*-----编辑-----*/
+ 	$("#editBtn").click(function(){
+ 		var checkStatus = table.checkStatus('idTest');//idTest 即为基础参数 id 对应的值
+ 		console.log(checkStatus);
+ 		//勾选一条数据
+    if (checkStatus.data.length == 0) {
+        parent.layer.open({
+            title: '温馨提示'
+            , content: '请勾选一条目标数据！'
+        });
+        return false;
+    } 
+    var index=parent.layer.open({
+		  type: 2,
+		  title:'编辑水费类型',
+		  area: ['700px', '380px'], //宽高
+		  content: 'html/waterFee-mgt/waterFee-type/edit.html',
+		  resize:false,//禁止拉伸
+		});
+		parent.index_  = index;//传给子页面的值index
+		parent.id_ = checkStatus.data[0].id;//传给子页面的数据id！！！！
+		
+//	  com.checkOpen("编辑","html/parm-mgt/meals-mgt/edit.html",['700px', '380px']);
+	})
+	 /*-----删除-----*/
+	$("#delBtn").click(function(){	
+		var checkStatus = table.checkStatus('idTest');//idTest 即为基础参数 id 对应的值
+ 		console.log(checkStatus);
+ 		//勾选一条数据
+    if (checkStatus.data.length == 0) {
+        parent.layer.open({
+            title: '温馨提示'
+            , content: '请勾选一条目标数据！'
+        });
+        return false;
+    } 
+			parent.layer.confirm('确认删除?', {title:'提示'}, function(index){
+			  //do something
+			  
+			  parent.layer.close(index);
+			  window.location.reload();
+			 
+			});
+	});
+
+
+})	
+</script>
+</html>

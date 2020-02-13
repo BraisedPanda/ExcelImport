@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>系统设置 / 短信模板/ 短信模板-编辑</title>
+<link rel="stylesheet" href="../../../../../static/css/layui.css" media="all">
+  <link rel="stylesheet" type="text/css" href="../../../../../static/css/common-layer.css"/>
+  <style>
+  	.layui-form-item{margin-bottom: 10px;}
+  	.layui-form-select dl{max-height: 187px;}
+  	.layui-form-item .layui-input-inline{width: 460px !important;}
+  </style>
+</head>
+<body style="background: #fff;overflow-x:hidden ;" class="innerBody">
+
+<form class="layui-form layui-form-pane ml30" action="" id="formHtml" style="width: ;margin-top: 20px;" lay-filter="updForm">
+  <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label label-120">模板名称</label>
+      <div class="layui-input-inline">
+        <input type="text" name="" lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入">
+      </div>
+    </div>
+  </div>
+  <div class="layui-form-item">
+  	<div class="layui-inline">
+  	   <label class="layui-form-label">模板类型</label>
+  	   <div class="layui-input-inline">
+  	         <select name="" lay-filter="">
+  	 	        <option value="0" selected>后付费账单出账通知</option>
+  	 	        <option value="1">后付费缴费成功通知</option>
+				<option value="2" selected>后付费催缴通知</option>
+				<option value="3">预付费余额不足通知</option>
+				<option value="4" selected>预付费充值到账通知</option>
+				<option value="5">开阀通知</option>
+				<option value="6">关阀通知</option>
+  	         </select>
+  	     </div>
+  	</div>
+  </div>
+  <div class="layui-form-item layui-form-text" style="width: 590px;">
+	  <label class="layui-form-label label-120">模板内容</label>
+	  <div class="layui-input-block">
+		<textarea style="resize:none;height: 160px;" name="desc" placeholder="请输入模板内容" class="layui-textarea" >尊敬的___________客户，客户号______________(详细地址），您已逾期__________天未缴纳水费，请尽快缴纳。</textarea>
+	  </div>
+  </div>
+  <div class="layui-form-item  window-block-btn">
+    <div class="layui-input-block">
+    	<button type="button" class="layui-btn layui-btn-primary window-btn" id="canleBtn">取消</button>
+      <button type="button" class="layui-btn window-btn" lay-submit="" lay-filter="confirmBtn">确定</button>
+      
+    </div>
+ 	</div>
+</form>
+
+
+</body>
+
+<script src="../../../../../static/layui.all.js"></script>
+<script src="../../../../../static/js/common.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	 //主动加载jquery模块
+	layui.use(['jquery', 'layer','laydate'], function(){
+		var $ = layui.jquery //重点处
+		,laydate = layui.laydate
+		,layer = layui.layer;
+		//得到父页面的id值
+		var index = (window.parent.index_);
+		console.log(index);
+	 
+		layui.use('form', function(){  
+		 	var form = layui.form;
+		 	//------确认添加分区-------
+			form.on('submit(confirmBtn)', function (data) {
+			    var obj = data.field;
+			    console.log(obj);
+			    //以下是ajax
+			    
+			    /*添加成功之后，关闭弹窗，刷新父页面*/
+			    parent.layer.close(index);//关闭layer
+			    $('#iframe',parent.document).attr('src','html/system-set/sms-platform/sms-template/sms-template.html');
+			});
+			//取消
+			$("body").on("click","#canleBtn",function(){
+				parent.layer.close(index);//关闭layer
+			})
+			
+		})	
+	})
+   
+</script>
+</html>

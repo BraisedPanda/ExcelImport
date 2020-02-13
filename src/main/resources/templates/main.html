@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>首页</title>
+<link rel="stylesheet" href="css/layui.css"/>
+<link rel="shortcut  icon" type="../image/x-icon" href="images/logo.png" media="screen" />
+<style type="text/css">
+* {
+	padding: 0;
+	margin: 0;
+}
+ .layui-table-cell{
+  	padding: 0;
+  	text-align: center;
+  }
+.container{
+	width: 100%;
+	
+	/*overflow: auto;*/
+}
+.left-sider{
+	background: #FFFFFF;
+	float: left;
+	width:330px;
+	
+}
+.left-sider ul {
+	overflow: hidden;
+	margin-left: -3.3333%;
+}
+.left-sider ul li{
+	width: 30%;
+	float: left;
+	text-align: center;
+	background-color: #eee;
+	margin:5px 0 5px 3.3333333%;
+	cursor: pointer;
+}
+.left-sider ul li:hover{
+	background: #5da5f1;
+}
+.left-sider ul li:hover cite{
+	color: #FFFFFF;
+	transform:scale(1.2);
+}
+.left-sider ul li:hover i{
+	color: #FFFFFF;
+	transform:scale(1.05);
+}
+.left-sider li i{
+	display: inline-block;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-radius: 2px;
+    font-size: 30px;
+    transition: all 0.5s;  
+}
+.left-sider li cite {
+    position: relative;
+    top: -5px;
+    display: block;
+    color: #666;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 14px;
+    transition: all .5s;  
+}
+
+.right-sider{
+	background: #FFFFFF;
+	margin-left: 340px;
+	
+}
+.layui-tab{
+	margin: 0;
+}
+
+
+.layui-tab-content{
+	padding: 0;
+}
+.layui-carousel{background-color: #fff;}
+.layadmin-shortcut li .layui-icon{ text-align: center; display: inline-block; width: 100%; height: 60px; line-height: 60px; font-size: 30px; background-color: #f8f8f8; transition:all 0.3s}
+.layadmin-shortcut li .layui-icon:hover{background-color: #f2f2f2;}
+.layadmin-shortcut li cite{position: relative; display: block; color: #666; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; top: 2px; text-align: center;}
+.layadmin-backlog .layadmin-backlog-body{color: #999; padding-top: 20px;}
+.layadmin-backlog-body h3{padding-bottom:5px; font-size: 16px;}
+.layadmin-backlog-body p cite{font-style: normal; font-size: 30px; font-weight: 300; color: #009688;}
+#msgul cite{color: #FF5722!important;}
+.container{position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow-y: auto; overflow-x: hidden;}
+.topmd{height: 219px;}
+.msg{padding: 9px 10px 0px 10px;cursor: pointer;background: #f8f8f8;}
+.msgTxt{color: #999;font-weight: bold;}
+.msg i{position: relative;top:2px;font-size: 18px;}
+.pd15{padding: 10.5px 15px 15px 15px  !important;}
+.card-img{float: left; margin-right: 20px; width: 60px; padding: 15px 0 0 20px;}
+#test1{width: 150px; display: inline-block; }
+.selectDate{margin-left: 40%; margin-top: 10px;}
+.selectDate a{cursor: pointer; margin-right: 20px;}
+</style>
+</head>
+<body>
+	<div class="container">		
+		<div class="layui-row layui-col-space10">
+			<!--系统信息-->
+			<div class="layui-col-md8 layui-col-space10" id="msgul">
+			    <div class="layui-col-md4">
+			      	<div class="layui-card">
+				        <div class="layui-card-body layadmin-backlog" style="height: 100px;">
+				        	<a href="javascript:void(0)" id="warn">
+				        	  <div class="card-img"><img src="images/u117.png" width="100%"></div>
+				        	  <div class="layadmin-backlog-body">
+				        	  	<h3>设备告警</h3>
+	                            <p><cite id="number">999</cite></p>
+				        	  </div>
+	                          <div style="clear: both;"></div>                          
+	                        </a>
+				      	</div>
+		      		</div>
+			    </div>
+			    <div class="layui-col-md4">
+			        <div class="layui-card">
+				        <div class="layui-card-body layadmin-backlog" style="height: 100px;">
+				        	<a href="javascript:void(0)">
+				        	  <div class="card-img"><img src="images/u118.png" width="100%"></div>
+				        	  <div class="layadmin-backlog-body" style="padding-top: 10px;">
+				        	  	<h3>今日总用水量</h3>
+	                            <p><cite>4543吨</cite></p>
+	                            <p>昨日总用水量4000吨</p>
+				        	  </div>
+	                          <div style="clear: both;"></div>                          
+	                        </a>
+				      	</div>
+		      		</div>
+			    </div>
+			    <div class="layui-col-md4">
+			        <div class="layui-card">
+				        <div class="layui-card-body layadmin-backlog" style="height: 100px;">
+				        	<a href="javascript:void(0)">
+				        	  <div class="card-img"><img src="images/u119.png" width="100%"></div>
+				        	  <div class="layadmin-backlog-body">
+				        	  	<h3>总装表数</h3>
+	                            <p><cite>54,323</cite></p>
+				        	  </div>
+	                          <div style="clear: both;"></div>                          
+	                        </a>
+				      	</div>
+		      		</div>
+			    </div>
+			    <!--周用水量排名-->
+			    <div class="layui-col-md6">
+			        <div class="layui-card">
+			        	<div class="layui-card-header">周用水量排名</div>
+				        <div class="layui-card-body" style="height: 250px;">
+				        	<table class="layui-hide" id="waterTable"></table>
+				      	</div>
+		      		</div>
+			    </div>
+			    <!--今日用水量4323吨-->
+			    <div class="layui-col-md6">
+			        <div class="layui-card">
+			        	<div class="layui-card-header">今日用水量4323吨</div>
+				        <div class="layui-card-body" style="height: 250px;">
+				        	<div id="payout" style="min-width:200px;height:100%;"></div>
+				      	</div>
+		      		</div>
+			    </div>			    
+		    </div>
+		    <!--今日用水量4323吨-->
+		    <div class="layui-col-md4">
+		        <div class="layui-card">
+		        	<div class="layui-card-header">设备监控</div>
+			        <div class="layui-card-body" style="height: 380px;">
+			        	<table class="layui-hide" id="equipTable"></table>
+			      	</div>
+		      	</div>
+		    </div>
+
+			
+
+			<!--区域用水量趋势  start-->
+			<div class="layui-col-md12" style="padding-bottom: 0px;">
+				<div class="layui-card" style="">
+	              <div class="layui-card-header">区域用水量趋势</div>
+				  <div class="selectDate">
+					  <a href="#" id="today">今日</a>
+					  <a href="#" id="week">本周</a>
+					  <a href="#" id="month">本月</a>
+					  <input class="layui-input" id="test1" type="text" placeholder="yyyy-MM-dd" >
+				  </div>
+				  
+	              <div class="layui-card-body" width='100%'  id="main" style="min-width:200px;height:100%;"></div>
+	            </div>
+			</div>
+			<!--区域用水量趋势  end-->
+		</div>
+		
+
+	</div>
+</body>
+<script src="layui.all.js"></script>
+<script src="js/common.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="js/echarts.common.min.js" ></script>
+<script>
+//主动加载jquery模块
+layui.use(['jquery', 'layer','element','table','laydate'], function(){
+	var $ = layui.jquery //重点处
+	,layer = layui.layer
+	,laydate = layui.laydate
+	, element = layui.element;
+	table = layui.table;//表格，注意此处table必须是全局变量
+	function magic_number(value) {
+		var num = $("#number");
+		num.animate({
+			count: value
+		}, {
+			duration: 500,
+			step: function() {
+				num.text(String(parseInt(this.count)));
+			}
+		});
+	};
+	var i=1020;
+	function update() {
+		magic_number(800+i);
+		i = i+500;
+		// $.ajax({
+		// 	async : false,    //表示请求是否异步处理
+		// 	type : "post",    //请求类型
+		// 	url : "/getDepts",//请求的 URL地址
+		// 	dataType : "json",//返回的数据类型
+		// 	success: function (data) {
+		// 	   magic_number(data); 
+		// 	},
+		// 	error:function (data) {
+		// 		alert(data.result);
+		// 	}
+		// });
+	
+	};
+	setInterval(update, 2000); //5秒钟执行一次 
+	table.render({
+	    elem: '#waterTable'
+	    ,url:'tableJson2.js'
+	    ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+	    ,cols: [ [
+	      {field:'id',title: '排名'}
+	      ,{field:'area',  title: '区域'}
+	      ,{field:'account', title: '占比'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+		  ,{field:'ysl', title: '用水量'}
+	    ] ]
+	  });
+	  
+	  table.render({
+	    elem: '#equipTable'
+	    ,url:'tableJson3.js'
+	    ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+	    ,cols: [ [
+	      {field:'imei',title: '水表IMEI号',width:160}
+	      ,{field:'sbzt',  title: '水表状态'}
+	      ,{field:'fmzt', title: '阀门状态'} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+		  ,{field:'dl', title: '电量'}
+	    ] ]
+	  });
+	  
+	  //昨日收入时间
+	  laydate.render({
+		elem: '#test1'
+		,type:'date'
+		,value:new Date()
+		//,max:0
+		,done: function(value, date, endDate){
+		   console.log(value); //得到日期生成的值，如：2017-08-18
+			option.series[0].data=[420, 152, 280, 34, 390, 230, 109,180, 372, 200, 334, 260, 330, 120]			
+			myChart.setOption(option, true);
+		  }
+	  });
+	  
+	  $('#today').click(function(){
+		  option.series[0].data=[220, 52, 310, 134, 250, 230, 199,100, 412, 210, 134, 110, 200, 220]
+		  myChart.setOption(option, true);
+	  })
+	  $('#week').click(function(){
+	  		  option.series[0].data=[307, 152, 310, 134, 250, 80, 199,402, 412, 210, 134, 110, 200, 120]
+	  		  myChart.setOption(option, true);
+	  })
+	  $('#month').click(function(){
+	  		  option.series[0].data=[120, 92, 310, 134, 280, 230, 119,100, 112, 210, 194, 410, 100, 220]
+	  		  myChart.setOption(option, true);
+	  })
+
+	/*---快捷操作----*/
+	var url_;
+	$(".layui-card-body ul a").click(function(){
+		url_ = $(this).attr("href");//获取到当前点击跳转的快捷方式的url地址
+		var uls = window.parent.document.getElementById("navList");
+		for(var i = 0;i<$(uls).find("a").length;i++){
+			if($(uls).find("a").eq(i).attr("menu_url") == url_){								
+				var txt = $('.nav-bar', parent.document);//获取iframe父级页面的nav-bar的节点
+				$(txt).find("span").text('当前位置：'+$(uls).find("a").eq(i).attr("page_name"));//当前位置的路径
+				$(uls).find("a").eq(i).parents('li').siblings().removeClass("layui-this").removeClass("layui-nav-itemed");
+				$(uls).find("a").eq(i).parents('li').addClass('layui-nav-itemed');
+				$(uls).find("a").eq(i).parents('dd').addClass('layui-nav-itemed');
+				$(uls).find("a").eq(i).parent().addClass('layui-this').removeClass("layui-nav-itemed");
+			}
+		}
+	})
+	//点击离线设备
+	$("#lxsb").click(function(){
+		//debugger;
+		var url_ = $(this).children('span').attr("menu_url");//获取到当前点击跳转的快捷方式的url地址
+		$('#iframe',parent.document).attr('src',url_ );
+    	var pageName =$(this).children('span').attr("page_name");//获取点击菜单的名称
+    	//parent.$(".nav-bar span").text("当前位置："+pageName);//赋值
+    	window.parent.document.getElementById("pagename").innerText=pageName;
+	})
+	/*--echarts  表格开始----*/
+	/*-------------区域用水量趋势  开始---------------------*/
+	// 基于准备好的dom，初始化echarts实例
+	$("#main").height($('#iframeBox', parent.document).height()-321);
+    var myChart = echarts.init(document.getElementById('main'));
+    // 指定图表的配置项和数据
+    option = {
+        color: ['#3398DB'],
+        tooltip : {
+            trigger: 'axis',
+            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data : ['城关镇', '王集乡', '咏新镇', '张庙乡', '城北镇', '永新镇', '利辛县','城关镇', '王集乡', '咏新镇', '张庙乡', '城北镇', '永新镇', '利辛县'],
+                axisTick: {
+                    alignWithLabel: true
+                }
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'用水量',
+                type:'bar',
+                barWidth: '35%',
+                data:[10, 52, 200, 334, 390, 330, 220,180, 72, 200, 334, 460, 330, 220]
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    /*-------------区域用水量趋势  结束---------------------*/
+   
+    /*-------------今日用水量  开始---------------------*/
+   	var myChart1 = echarts.init(document.getElementById('payout'));
+    // 指定图表的配置项和数据
+    var option1 = {
+	    title : {
+	        //text: '某站点用户访问来源',
+	        //subtext: '纯属虚构',
+	        x:'center'
+	    },
+	    tooltip : {
+	        trigger: 'item',
+	        formatter: "{a} <br/>{b} : {c} ({d}%)"
+	    },
+	    legend: {
+	    	show:true,
+	        orient: 'vertical',
+	        left: 'right',
+	        data: ['城关镇','王集乡','咏新镇','张庙乡','城北镇']
+	    },
+	    series : [
+	        {
+	            name: '今日用水量',
+	            type: 'pie',
+	            radius : '55%',
+	            center: ['35%', '50%'],
+	            data:[
+	                {value:488, name:'城关镇'},
+	                {value:310, name:'王集乡'},
+	                {value:234, name:'咏新镇'},
+	                {value:135, name:'张庙乡'},
+	                {value:248, name:'城北镇'}
+	            ],
+	            itemStyle: {
+	                emphasis: {
+	                    shadowBlur: 10,
+	                    shadowOffsetX: 0,
+	                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+	                }
+	            }
+	        }
+	    ]
+	};
+    // 使用刚指定的配置项和数据显示图表。
+    myChart1.setOption(option1);
+    /*-------------今日用水量  结束---------------------*/
+   
+   //设备告警
+   	$("#warn").click(function(){	
+   	  com.pageOpen("设备告警","warn.html",['800px', '500px']);
+   	});
+		
+}) 
+
+
+ 
+   
+
+</script>
+</html>

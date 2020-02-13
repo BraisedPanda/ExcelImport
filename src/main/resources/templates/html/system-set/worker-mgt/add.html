@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>系统设置 / 员工管理-新增</title>
+ <link rel="stylesheet" href="../../../../static/css/layui.css" media="all">
+   <link rel="stylesheet" type="text/css" href="../../../../static/css/common-layer.css"/>
+   <style>
+   	.layui-form-item{margin-bottom: 10px;}
+   	.layui-form-select dl{max-height: 187px;}
+   	.layui-form-item .layui-input-inline{width: 460px !important;}
+ 	.cifa{
+ 		margin-left: 130px !important;
+ 		border: 1px solid #E6E6E6;
+ 		width: 459px;
+ 	}
+   </style>
+ </head>
+ <body style="background: #fff;overflow-x:hidden ;" class="innerBody">
+ 
+ <form class="layui-form layui-form-pane ml30" action="" id="formHtml" style="width: ;margin-top: 20px;" lay-filter="updForm">
+ 	<div class="layui-form-item">
+       <label class="layui-form-label label-120">员工账号</label>
+       <div class="layui-input-inline">
+         <input type="text" name="" lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入">
+       </div> 
+   </div>
+   <div class="layui-form-item">
+       <label class="layui-form-label label-120">登录密码</label>
+       <div class="layui-input-inline">
+         <input type="text" name="" lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入">
+       </div> 
+   </div>
+   <div class="layui-form-item">
+       <label class="layui-form-label label-120">姓名</label>
+       <div class="layui-input-inline">
+         <input type="text" name="" lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入">
+       </div> 
+   </div>
+   <div class="layui-form-item">
+       <label class="layui-form-label label-120">身份证号</label>
+       <div class="layui-input-inline">
+         <input type="text" name="" lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入">
+       </div> 
+   </div>
+   <div class="layui-form-item">
+       <label class="layui-form-label label-120">电话号码</label>
+       <div class="layui-input-inline">
+         <input type="text" name="" lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入">
+       </div> 
+   </div>
+   <div class="layui-form-item">
+       <label class="layui-form-label label-120">邮箱</label>
+       <div class="layui-input-inline">
+         <input type="text" name="" lay-verify="required" autocomplete="off" class="layui-input" placeholder="请输入">
+       </div> 
+   </div>
+   <div class="layui-form-item">
+ 	    <label class="layui-form-label">角色</label>
+ 		<div class="layui-input-block cifa">	
+ 			<input name="ci" title="员工" type="radio" value="1" lay-filter="ci" checked="">
+ 			<input name="ci" title="管理员" type="radio" value="2" lay-filter="ci">
+ 		</div>
+   </div>
+   <div class="layui-form-item  window-block-btn">
+     <div class="layui-input-block">
+     	<button type="button" class="layui-btn layui-btn-primary window-btn" id="canleBtn">取消</button>
+       <button type="button" class="layui-btn window-btn" lay-submit="" lay-filter="confirmBtn">确定</button>
+       
+     </div>
+  	</div>
+ </form>
+ 
+ 
+ </body>
+ 
+ <script src="../../../../static/layui.all.js"></script>
+ <script src="../../../../static/js/common.js" type="text/javascript" charset="utf-8"></script>
+ <script type="text/javascript">
+ 	 //主动加载jquery模块
+ 	layui.use(['jquery', 'layer','laydate'], function(){
+ 		var $ = layui.jquery //重点处
+ 		,laydate = layui.laydate
+ 		,layer = layui.layer,
+ 		form = layui.form;
+ 		//得到父页面的id值
+ 		var index = (window.parent.index_);
+ 		console.log(index);
+ 		layui.use('form', function(){  
+ 		 	var form = layui.form;
+ 		 	//------表单提交-------
+ 			form.on('submit(confirmBtn)', function (data) {
+ 			    var obj = data.field;
+ 			    console.log(obj);
+ 			    //以下是ajax
+ 			    
+ 			    /*添加成功之后，关闭弹窗，刷新父页面*/
+ 			    parent.layer.close(index);//关闭layer
+ 			    $('#iframe',parent.document).attr('src', 'html/parm-mgt/meter-model/meter-model.html');
+ 			});
+ 			//取消
+ 			$("body").on("click","#canleBtn",function(){
+ 				parent.layer.close(index);//关闭layer
+ 			})
+ 			
+ 		})	
+ 	})
+    
+ </script>
+ </html>
